@@ -12,6 +12,8 @@ minimumReleaseAgeExclude:
   - '@vue/server-renderer@3.5.38'
   - '@vue/shared@3.5.38'
   - vue@3.5.38
+  - '@rsbuild/core@2.0.14'
+  - '@types/node@26.0.0'
 onlyBuiltDependencies:
   - core-js
   - unrs-resolver
