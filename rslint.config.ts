@@ -80,7 +80,7 @@ export default defineConfig([
           pathGroups: [
             {
               pattern:
-                '{vue,vue-router,vuex,@/store,vue-i18n,pinia,vite,vitest,vitest/**,@vitejs/**,@vue/**}',
+                '{vue,vue-router,vuex,@/stores,vue-i18n,pinia,@rsbuild,@rstest,@rstest/**,@rslint/**,@vue/**}',
               group: 'external',
               position: 'before',
             },
