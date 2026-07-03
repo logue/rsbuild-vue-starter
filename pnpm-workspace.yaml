@@ -1,33 +1,7 @@
 allowBuilds:
   unrs-resolver: true
 minimumReleaseAgeExclude:
-  - prettier@3.8.4 || 3.8.5
-  - '@vue/compiler-core@3.5.38'
-  - '@vue/compiler-dom@3.5.38'
-  - '@vue/compiler-sfc@3.5.38'
-  - '@vue/compiler-ssr@3.5.38'
-  - '@vue/reactivity@3.5.38'
-  - '@vue/runtime-core@3.5.38'
-  - '@vue/runtime-dom@3.5.38'
-  - '@vue/server-renderer@3.5.38'
-  - '@vue/shared@3.5.38'
-  - vue@3.5.38
-  - '@rsbuild/core@2.0.14 || 2.1.0'
-  - '@types/node@26.0.0'
-  - '@rspack/binding-darwin-arm64@2.1.0'
-  - '@rspack/binding-darwin-x64@2.1.0'
-  - '@rspack/binding-linux-arm64-gnu@2.1.0'
-  - '@rspack/binding-linux-arm64-musl@2.1.0'
-  - '@rspack/binding-linux-riscv64-gnu@2.1.0'
-  - '@rspack/binding-linux-riscv64-musl@2.1.0'
-  - '@rspack/binding-linux-x64-gnu@2.1.0'
-  - '@rspack/binding-linux-x64-musl@2.1.0'
-  - '@rspack/binding-wasm32-wasi@2.1.0'
-  - '@rspack/binding-win32-arm64-msvc@2.1.0'
-  - '@rspack/binding-win32-ia32-msvc@2.1.0'
-  - '@rspack/binding-win32-x64-msvc@2.1.0'
-  - '@rspack/binding@2.1.0'
-  - '@rspack/core@2.1.0'
+  - '@rsbuild/core@2.1.4'
 onlyBuiltDependencies:
   - core-js
   - unrs-resolver

@@ -1,6 +1,6 @@
 {
-  "name": "rsbuild-vue3-ts-starter",
-  "version": "0.2.3",
+  "name": "rsbuild-vue-starter",
+  "version": "0.2.4",
   "description": "Vue3 TypeScript Starter project for Rsbuild.",
   "license": "MIT",
   "type": "module",
@@ -10,13 +10,13 @@
     "email": "logue@hotmail.co.jp",
     "url": "https://logue.dev/"
   },
-  "homepage": "https://github.com/logue/rsbuild-vue3-ts-starter",
+  "homepage": "https://github.com/logue/rsbuild-vue-starter",
   "repository": {
     "type": "git",
-    "url": "git@github.com:logue/rsbuild-vue3-ts-starter.git"
+    "url": "git@github.com:logue/rsbuild-vue-starter.git"
   },
   "bugs": {
-    "url": "https://github.com/logue/rsbuild-vue3-ts-starter/issues"
+    "url": "https://github.com/logue/rsbuild-vue-starter/issues"
   },
   "engines": {
     "node": ">=24"
@@ -45,17 +45,17 @@
     "vue-router": "^5.1.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.5.1",
-    "@rsbuild/core": "^2.1.0",
-    "@rsbuild/plugin-vue": "^2.0.0",
-    "@rslint/core": "^0.6.3",
+    "@biomejs/biome": "^2.5.2",
+    "@rsbuild/core": "^2.1.4",
+    "@rsbuild/plugin-vue": "^2.0.1",
+    "@rslint/core": "^0.6.4",
     "@rstest/adapter-rsbuild": "^0.10.6",
     "@rstest/core": "^0.10.6",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/vue": "^8.1.0",
     "@tsconfig/node-lts": "^24.0.0",
-    "@types/node": "^26.0.1",
+    "@types/node": "^26.1.0",
     "@vue/test-utils": "^2.4.11",
     "@vue/tsconfig": "^0.9.1",
     "globals": "^17.7.0",
@@ -63,9 +63,9 @@
     "husky": "^9.1.7",
     "jiti": "^2.7.0",
     "npm-run-all2": "^9.0.2",
-    "prettier": "^3.8.5",
+    "prettier": "^3.9.4",
     "typescript": "^6.0.3",
-    "vue-tsc": "^3.3.5"
+    "vue-tsc": "^3.3.6"
   },
   "lint-staged": {
     "*": "run-s lint:*.{js,ts,yaml,json,css,sass,scss,htm,html,vue,md} --"

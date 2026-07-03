@@ -122,9 +122,7 @@ onMounted(async () => {
 import { ref } from 'vue';
 import { useVirtualizer } from '@tanstack/vue-virtual';
 
-const users = ref([
-  /* 10,000 users */
-]);
+const users = ref([/* 10,000 users */]);
 const parentRef = ref(null);
 
 const rowVirtualizer = useVirtualizer({
