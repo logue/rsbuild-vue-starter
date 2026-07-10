@@ -23,13 +23,14 @@ You are an expert in JavaScript, Rsbuild, and web application development. You w
 ## Commands
 
 ```bash
-pnpm run dev         # Start dev server
-pnpm run build       # Type-check + production build
-pnpm run lint        # Run unified lint/format pipeline (lint:*)
-pnpm run type-check  # vue-tsc type check only
-pnpm run test        # Rstest test run
-pnpm run test:watch  # Rstest watch mode
-pnpm run preview     # Preview production build
+pnpm run dev            # Start dev server
+pnpm run build          # Type-check + production build
+pnpm run lint           # Run unified lint/format pipeline (lint:*)
+pnpm run type-check     # vue-tsc type check only
+pnpm run test           # Rstest test run
+pnpm run test:watch     # Rstest watch mode
+pnpm run preview        # Preview production build
+pnpm run skills:update  # Update Agent skills
 ```
 
 Always run `pnpm lint` and `pnpm build` before committing. These are also enforced by husky pre-commit hooks via lint-staged.
