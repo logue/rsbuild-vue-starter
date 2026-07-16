@@ -5,6 +5,25 @@ minimumReleaseAgeExclude:
   - '@rstest/adapter-rsbuild@0.11.1'
   - '@rstest/core@0.11.1'
   - prettier@3.9.5
+  - '@rslint/core@0.7.0'
+  - '@rslint/native-darwin-arm64@0.7.0'
+  - '@rslint/native-darwin-x64@0.7.0'
+  - '@rslint/native-linux-arm64-gnu@0.7.0'
+  - '@rslint/native-linux-arm64-musl@0.7.0'
+  - '@rslint/native-linux-x64-gnu@0.7.0'
+  - '@rslint/native-linux-x64-musl@0.7.0'
+  - '@rslint/native-win32-arm64-msvc@0.7.0'
+  - '@rslint/native-win32-x64-msvc@0.7.0'
+  - '@vue/compiler-core@3.5.40'
+  - '@vue/compiler-dom@3.5.40'
+  - '@vue/compiler-sfc@3.5.40'
+  - '@vue/compiler-ssr@3.5.40'
+  - '@vue/reactivity@3.5.40'
+  - '@vue/runtime-core@3.5.40'
+  - '@vue/runtime-dom@3.5.40'
+  - '@vue/server-renderer@3.5.40'
+  - '@vue/shared@3.5.40'
+  - vue@3.5.40
 onlyBuiltDependencies:
   - core-js
   - unrs-resolver
