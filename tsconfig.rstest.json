@@ -1,17 +1,13 @@
 {
-  "extends": "./tsconfig.app.json",
-
+  "extends": "./tsconfig.rsbuild.json",
   // Include test files and application source so the editor can resolve
   // imported Vue SFCs from test files without relying on project references.
   "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
   "exclude": [],
-
   "compilerOptions": {
     // Rstest runs in a different environment than the application code.
     // Keep Node globals available for the test runner.
     "lib": [],
-    "types": ["node"],
-
     // `vue-tsc --build` produces a .tsbuildinfo file for incremental type-checking.
     // Specified here to keep it out of the root directory.
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.rstest.tsbuildinfo"

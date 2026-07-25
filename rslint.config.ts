@@ -8,6 +8,7 @@ export default defineConfig([
     ignores: [
       '**/dist/**',
       '**/dist-ssr/**',
+      '**/docs/**',
       '**/coverage/**',
       '**/node_modules/**',
     ],

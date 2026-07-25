@@ -1,6 +1,6 @@
 {
   "name": "rsbuild-vue-starter",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Vue3 TypeScript Starter project for Rsbuild.",
   "license": "MIT",
   "type": "module",
@@ -21,17 +21,16 @@
   "engines": {
     "node": ">=24"
   },
-  "packageManager": "pnpm@11.13.1",
+  "packageManager": "pnpm@11.17.0",
   "scripts": {
     "dev": "rsbuild dev --open",
+    "lint": "run-s lint:*",
+    "lint:rslint": "rslint --fix .",
+    "lint:biome": "biome format --write",
     "build": "run-p type-check \"build-only {@}\" --",
     "build:clean": "rimraf dist",
     "preview": "rsbuild preview",
     "skills:update": "npx skills update",
-    "lint": "run-s lint:*",
-    "lint:rslint": "rslint --fix .",
-    "lint:biome": "biome format --write",
-    "lint:prettier": "prettier \"./**/*.{yaml,css,sass,scss,htm,html,vue,md}\" -w -u",
     "test": "rstest",
     "test:watch": "rstest --watch",
     "build-only": "rsbuild build",
@@ -45,30 +44,30 @@
     "vue-router": "^5.2.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.5.4",
-    "@rsbuild/core": "^2.1.6",
+    "@biomejs/biome": "^2.5.5",
+    "@rsbuild/core": "^2.1.8",
     "@rsbuild/plugin-vue": "^2.0.1",
-    "@rslint/core": "^0.7.0",
-    "@rstest/adapter-rsbuild": "^0.11.2",
-    "@rstest/core": "^0.11.2",
+    "@rslint/core": "^0.7.1",
+    "@rstest/adapter-rsbuild": "^0.11.4",
+    "@rstest/core": "^0.11.4",
     "@testing-library/dom": "^10.4.1",
-    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/jest-dom": "^7.0.0",
     "@testing-library/vue": "^8.1.0",
     "@tsconfig/node-lts": "^24.0.0",
     "@types/node": "^26.1.1",
     "@vue/test-utils": "^2.4.11",
     "@vue/tsconfig": "^0.9.1",
     "globals": "^17.7.0",
-    "happy-dom": "^20.10.6",
+    "happy-dom": "^20.11.1",
     "husky": "^9.1.7",
     "jiti": "^2.7.0",
     "npm-run-all2": "^9.0.2",
-    "prettier": "^3.9.5",
-    "typescript": "^7.0.2",
-    "vue-tsc": "^3.3.7"
+    "@typescript/native": "npm:typescript@^7.0.2",
+    "typescript": "npm:@typescript/typescript6@^6.0.2",
+    "vue-tsc": "^3.3.8"
   },
   "lint-staged": {
-    "*": "run-s lint:*.{js,ts,yaml,json,css,sass,scss,htm,html,vue,md} --"
+    "*": "pnpm lint"
   },
   "stackblitz": {
     "startCommand": "pnpm run test:unit"
