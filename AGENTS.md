@@ -2,55 +2,176 @@
 
 This file provides guidance for AI coding agents (GitHub Copilot, Claude, Cursor, etc.) working in this repository.
 
-You are an expert in JavaScript, Rsbuild, and web application development. You write maintainable, performant, and accessible code.
+You are an expert in TypeScript, Rsbuild, Rstest, and Web application development. You write maintainable, performant, and accessible code.
 
----
+## Setup & Overview
 
-## Project Overview
-
-**Vue 3 + TypeScript + Rsbuild** starter template.
-
-- **Framework**: Vue 3 (`<script setup>` SFC only)
 - **Build tool**: Rsbuild
-- **Language**: TypeScript (strict)
-- **State management**: Pinia (setup-store style)
-- **Routing**: Vue Router 5
+- **Linter**: Rslint and Biome
+- **Testing**: Rstest
+- **Language**: TypeScript 7
 - **Package manager**: pnpm (do not use npm or yarn)
-- **Node version**: `>=24`
 
----
+**Last updated**: 2026-08-05
+**Verified with**: `package.json` in this repository
+
+### Tool Versions
+
+See `package.json` for authoritative dependency versions.
+
+This guide assumes:
+
+- TypeScript 7.0.2 or later
+- Rsbuild 2.1.9 or later
+- Rstest 0.11.5 or later
+
+**If you encounter version-related issues, check `package.json` directly—it is the source of truth.**
+
+### VS Code Setup
+
+Recommended extensions are listed in `.vscode/extensions.json`.
+Formatter and linter are configured in `.vscode/settings.json`:
+
+- Default formatter: **Biome**
+- Format on save: enabled
+- Auto-fix on save: Rslint
+
+When you open the project in VS Code, you'll be prompted to install recommended extensions.
+
+## Project
+
+### Project Structure
+
+This project uses two complementary build tool:
+
+- **Rsbuild** - Builds the demo and documentation site
+  - Command: `pnpm run build:docs`
+  - Output: `docs/` (for manual testing and validation)
+  - Configuration: `rsbuild.config.ts`, `tsconfig.rsbuild.json`
+  - Purpose: Interactive demo to verify library functionality during development
+
+#### TypeScript Configuration Strategy
+
+TypeScript configurations are organized by **tool name, not by purpose**:
+
+- `tsconfig.rsbuild.json` - Site configuration
+- `tsconfig.rstest.json` - Testing configuration (if applicable)
+
+This approach eliminates conditional branching based on build purpose.
+Instead, each tool has its own explicit configuration namespace,
+making the build pipeline transparent and maintainable.
+
+### Development Workflow
+
+- `pnpm run dev` - Watch mode for library
 
 ## Commands
 
-```bash
-pnpm run dev            # Start dev server
-pnpm run build          # Type-check + production build
-pnpm run lint           # Run unified lint/format pipeline (lint:*)
-pnpm run type-check     # vue-tsc type check only
-pnpm run test           # Rstest test run
-pnpm run test:watch     # Rstest watch mode
-pnpm run preview        # Preview production build
-pnpm run skills:update  # Update Agent skills
-```
+- `pnpm run dev` - Start dev server
+- `pnpm run build` - Type-check + production build
+- `pnpm run lint` - Run unified lint/format pipeline (lint:\*)
+- `pnpm run type-check` - vue-tsc type check only
+- `pnpm run test` - Rstest test run
+- `pnpm run test:watch` - Rstest watch mode
+- `pnpm run preview` - Preview production build
+- `pnpm run clean` - Remove build artifacts
+- `pnpm run clean:hard` - Remove build artifact and build caches.
+- `pnpm run skills:update` - Update Agent skills
 
-Always run `pnpm lint` and `pnpm build` before committing. These are also enforced by husky pre-commit hooks via lint-staged.
+## Documentation
 
----
+- Rsbuild: <https://rsbuild.rs/llms.txt>
+- Rslint: <https://rslint.rs/llms.txt>
+- Rstest: <https://rstest.rs/llms.txt>
 
-## TypeScript Rules
+## Code Style
 
-- **No `any`** — use `unknown` and narrow with type guards.
+### TypeScript Rules
+
+- **No `any`** - use `unknown` and narrow with type guards.
 - **Explicit return types** on exported functions.
-- **Use `type` over `interface`** for object shapes; extend via intersection (`&`).
-- **Union literal types** instead of magic strings:
-  ```ts
-  type Status = 'active' | 'inactive' | 'pending';
-  ```
 - **Underscore prefix** for intentionally unused variables: `_value`, `_error`.
 - **Array type syntax**: `string[]` not `Array<string>`.
-- **Generic constructors**: left-hand side style — `const map: Map<string, User> = new Map()`.
+- **Generic constructors**: left-hand side style - `const map: Map<string, User> = new Map()`.
+- **Do not ignore TypeScript errors**
+- **Do not use `@ts-ignore` without good reason**
 
----
+### Directory Structure & File Organization
+
+- **`types/`** — Type-only definitions:
+  - Type aliases and union types (preferred over enums)
+  - Interface-like object shapes
+  - Generic types
+  - Default values paired with type definitions (see Type Pattern below)
+- **`interfaces/`** — Use only when:
+  - Multiple inheritance levels needed
+  - Clear contract inheritance matters
+
+### Type Definition Pattern
+
+Prefer `type` over `interface` for most cases. Consolidate type and default values together:
+
+```ts
+// types/Options.ts
+export type Options = {
+  someText: string;
+  someNumber: number;
+};
+
+/** Default configuration */
+export const Options: Options = {
+  someText: "white",
+  someNumber: 1,
+};
+```
+
+**Default value naming:** The variable name should match the type name (`import { Options }`).
+
+**Why `type` over `interface`:**
+
+- Tree-shaking friendly (especially for unions)
+- Single import point for type and default
+- Default values are visibly paired
+- Cleaner for simple contracts
+
+**Use `interface` when:**
+
+- Deep inheritance hierarchy (3+ levels)
+- Multiple implementations needed
+- Inheritance clarity is paramount
+
+### Union Types Over Enums
+
+Avoid `enum`. Use union types:
+
+```ts
+export type NoiseType = "blue" | "brown" | "green" | ...;
+export const noiseTypes: NoiseType[] = ["blue", "brown", ...];
+export const NoiseType: Record<NoiseType, NoiseGenerator> = { blue, brown, ... };
+```
+
+#### Formatting
+
+- Use Biome
+- Use Rslint for linting
+- **Indentation**: Two spaces
+- **Semicolons**: Use semicolons
+- **Quotes**: Double quotes
+
+### Naming Conventions
+
+- **Types/Interfaces**: `PascalCase` (e.g., `RspackOptions`)
+- **Classes**: `PascalCase` (e.g., `Compiler`)
+- **Functions**: `camelCase` (e.g., `createCompiler`)
+- **Variables**: `camelCase` (e.g., `compiler`)
+- **Constants**: `SCREAMING_SNAKE_CASE`
+- **Files**: `camelCase.ts` or `PascalCase.ts` (match main export)
+
+### Async/Await Patterns
+
+- Use `async/await` over promises
+- Handle errors with try/catch
+- Use `Promise.all` for parallel operations
 
 ## Vue SFC Rules
 
@@ -83,106 +204,67 @@ Always run `pnpm lint` and `pnpm build` before committing. These are also enforc
 - Always use `<style scoped>` — unscoped styles are prohibited.
 - CSS custom properties (design tokens) must be defined in a shared file (e.g., `src/styles/variables.css`) and not duplicated per component.
 
----
+## Patterns & Best Practices
 
-## Component Naming
+### Code Documentation & Comments
 
-- Component files: **PascalCase**, multi-word required (e.g., `UserCard.vue`, `AppHeader.vue`).
-  - `src/components/**/*.vue` — `error`
-- Do not create single-word components like `Header.vue` or `Card.vue`.
-
----
-
-## Import Rules
-
-- **Always use the `@/` alias** for internal imports — relative parent traversal (`../`) is prohibited in application code:
-
-  ```ts
-  // OK
-  import { useUserStore } from '@/stores/user';
-  import type { User } from '@/types';
-
-  // NG
-  import { useUserStore } from '../../../stores/user';
-  ```
-
-  > **Exception**: test files under `src/**/__tests__/` may use `../` to import the component under test (e.g., `import MyComponent from '../MyComponent.vue'`). This is intentional and the lint rule is disabled for that scope.
-
-- The `~` alias maps to `node_modules` (e.g., `~/some-lib/style.css`).
-- **Import order** (enforced by rslint, auto-fixed by `pnpm lint`):
-  1. Node built-ins
-  2. Vue core (`vue`, `vue-router`, `pinia`, `@vue/*`, `@rsbuild/*`)
-  3. External packages
-  4. Internal (`@/**`)
-  5. Sibling / index
-  6. Type imports
-     A blank line is required between each group.
-
----
-
-## Pinia Store Rules
-
-- Use **setup-store style** exclusively (not options-store style):
-  ```ts
-  // OK
-  export const useUserStore = defineStore('user', () => {
-    const user = ref<User | null>(null);
-    function setUser(u: User) {
-      user.value = u;
-    }
-    return { user, setUser };
-  });
-  ```
-- Store ID must match the file name (e.g., `defineStore('user', ...)` in `stores/user.ts`).
-- Persist state via `pinia-plugin-persistedstate` — do not manually read/write `localStorage`.
-
----
+- Use `//` for single-line
+- Use `/* */` for multi-line
+- All exported functions, types, interfaces, and global variables must have JSDoc
+- Non-exported implementation details can skip JSDoc
+- Use `@param`, `@returns`, `@example`, `@throws` as needed
+- Explain "why" not "what"
 
 ## Testing
 
-### Unit tests (Rstest)
+This project uses **Rstest** for testing.
 
-- Test files: `src/**/__tests__/*`
-- Follow **Arrange / Act / Assert** structure.
-- Mock external dependencies (API, DB, browser APIs) — tests must not make real network calls.
+### Running Tests
 
----
+- `pnpm run test` - Run all tests
+- `pnpm run test:watch` - Run tests in watch mode
 
-## Environment Variables
+### Test Structure & Naming
 
-- Client-side env vars should be prefixed with `VITE_APP_`.
-- Access via `import.meta.env.VITE_APP_*` (typed in `env.d.ts`).
+Tests are co-located with source code in `__tests__/` directories:
 
----
+```plain
+src/
+  components/
+    Button.ts
+    __tests__/
+      Button.spec.ts
+  utils/
+    helpers.ts
+    __tests__/
+      helpers.spec.ts
+```
 
-## Docs
+Naming convention:
 
-- Rsbuild: <https://rsbuild.rs/llms.txt>
-- Rspack: <https://rspack.rs/llms.txt>
-- Rstest: <https://rstest.rs/llms.txt>
+- Test files: `[SourceFile].spec.ts`
+- Co-location makes tests easy to find and maintain
 
----
+### Test Code Style
 
-## Git & PR Rules
+- Use descriptive test names
+- Group related tests with `describe`
+- Use `it` or `test` for individual cases
+- Clean up resources after tests (`afterEach`, `afterAll`)
+- Follow the same TypeScript rules as non-test code
 
-- Commit messages follow **Conventional Commits**:
-  ```
-  feat(auth): add JWT refresh token rotation
-  fix(api): handle 429 rate limit with exponential backoff
-  docs: update README setup instructions
-  ```
-- PRs should be focused on a single purpose; aim for diffs under ~400 lines.
-- Minimum **1 approving review** required before merging to `master`.
-- PR description must include: what changed, how to test, and screenshots if UI is affected.
+## Markdown Generation
 
----
+When generating markdown (documentation, AGENTS.md, etc.):
 
-## What NOT to Do
+- **Preserve code formatting**: `__` should NOT be converted to bold
+  within inline code or code blocks
+- Use backticks for inline code: `` `__tests__` ``
+- Code blocks will preserve literal `__` as-is
+- This applies to Node.js globals (`__dirname`, `__filename`)
+  and directory names (`__tests__`, `__mocks__`, etc.)
 
-- Do not use `any` — use `unknown` with type guards.
-- Do not use Options API (`defineComponent`, `data()`, `methods:`).
-- Do not use runtime `defineProps({ title: String })` declarations.
-- Do not write `../` relative imports that traverse parent directories (exception: `src/**/__tests__/` may use `../` to reach the component under test).
-- Do not use `<style>` without `scoped`.
-- Do not write bare `localStorage` / `sessionStorage` access — use `pinia-plugin-persistedstate`.
-- Do not install packages with `npm` or `yarn` — use `pnpm` only.
+Example:
+
+- ✓ Tests in `` `__tests__` `` directories
+- ✗ Tests in `**tests**` directories (incorrect)

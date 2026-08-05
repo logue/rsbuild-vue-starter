@@ -19,6 +19,8 @@ _Vite から `src` をそのままコピーするだけ！_
 
 Lint/Format は [Rslint](https://rslint.rs/)、[Prettier](https://prettier.io/)、[Biome](https://biomejs.dev/) を使った統合 `pnpm lint` パイプラインで実行されます。
 
+また、[vue-devtools](https://devtools.vuejs.org/)の代わりに、[vue-devtools-rstack](https://www.npmjs.com/package/@vue-devtools-rstack/rsbuild)が含まれています。
+
 ## コマンド
 
 コマンドはシンプルで CI フレンドリーな構成です。
@@ -54,10 +56,7 @@ Lint/Format は [Rslint](https://rslint.rs/)、[Prettier](https://prettier.io/)�
   - [vite-vuetify-ts-starter](https://github.com/logue/vite-vuetify-ts-starter) - Vuetify 3 対応
     - [tauri-vuetify-starter](https://github.com/logue/tauri-vuetify-starter) - 多言語クロスプラットフォーム・デスクトップアプリ向け
 
-## 🎨 開発者向けに作られました
+## License
 
-このテンプレートは、**UI/UX の卓越性** と **現代的な開発者体験** に焦点を当てて構築されています。すべてがシームレスに動作するよう、継続的なテストと更新を行っています。
-
-このプロジェクトの細部へのこだわりを気に入っていただけたら、Vue.js と Metaverse エコシステム全体での私の作業を支援するために、小さなスポンサーシップをお願いします。
-
-[![GitHub Sponsors](https://img.shields.io/github/sponsors/logue?label=Sponsor&logo=github&color=ea4aaa)](https://github.com/sponsors/logue)
+©2025-2026 by Logue.
+Licensed under the [MIT License](LICENSE).

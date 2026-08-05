@@ -1,6 +1,15 @@
-import { defineConfig, importPlugin, js, ts } from '@rslint/core';
+import {
+  defineConfig,
+  importPlugin,
+  promisePlugin,
+  rstestPlugin,
+  ts,
+  unicornPlugin,
+} from '@rslint/core';
 
-const APP_FILES = ['**/*.{ts,mts,tsx,js,mjs,jsx}'];
+const APP_FILES = [
+  '**/*.{ts,mts,tsx,js,mjs,jsx,json,jsonc,yml,yaml,vue,astro,svelte}',
+];
 const TEST_FILES = ['**/*.{test,spec}.{ts,mts,tsx,js,mjs,jsx}'];
 
 export default defineConfig([
@@ -14,13 +23,15 @@ export default defineConfig([
     ],
   },
 
-  // Base JavaScript / TypeScript recommended sets.
-  js.configs.recommended,
+  // Base TypeScript recommended sets.
   ts.configs.recommended,
+  promisePlugin.configs.recommended,
+  unicornPlugin.configs.recommended,
 
   {
     ...importPlugin.configs.recommended,
     files: APP_FILES,
+    plugins: ['@typescript-eslint', 'import', 'promise', 'unicorn'],
     settings: {
       'import/resolver': {
         node: true,
@@ -30,7 +41,19 @@ export default defineConfig([
             '@': './src',
             '~': './node_modules',
           },
-          extensions: ['.js', '.ts', '.jsx', '.tsx', '.vue'],
+          extensions: [
+            '.js',
+            '.ts',
+            '.json',
+            '.jsonc',
+            '.yml',
+            '.yaml',
+            '.jsx',
+            '.tsx',
+            '.vue',
+            '.svelte',
+            '.astro',
+          ],
         },
       },
     },
@@ -80,12 +103,6 @@ export default defineConfig([
           ],
           pathGroups: [
             {
-              pattern:
-                '{vue,vue-router,vuex,@/stores,vue-i18n,pinia,@rsbuild,@rstest,@rstest/**,@rslint/**,@vue/**}',
-              group: 'external',
-              position: 'before',
-            },
-            {
               pattern: '{@/**}',
               group: 'internal',
               position: 'before',
@@ -98,17 +115,19 @@ export default defineConfig([
           'newlines-between': 'always',
         },
       ],
+      // File names should, in principle, be in PascalCase, with some exceptions.
+      'unicorn/filename-case': 'off',
     },
   },
 
   {
     // Test files intentionally import from parent directories.
     files: TEST_FILES,
+    plugins: ['@typescript-eslint', 'import', 'promise', 'unicorn', 'rstest'],
     rules: {
+      ...rstestPlugin.configs.recommended.rules,
+      '@typescript-eslint/no-explicit-any': 'warn',
       'import/no-relative-parent-imports': 'off',
     },
   },
-
-  // NOTE: Rslint currently does not lint .vue SFC, markdown, or vitest/a11y plugin
-  // rules in this project setup. Those checks should be covered by dedicated tools.
 ]);

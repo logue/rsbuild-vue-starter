@@ -1,6 +1,6 @@
 {
   "name": "rsbuild-vue-starter",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Vue3 TypeScript Starter project for Rsbuild.",
   "license": "MIT",
   "type": "module",
@@ -21,21 +21,19 @@
   "engines": {
     "node": ">=24"
   },
-  "packageManager": "pnpm@11.17.0",
+  "packageManager": "pnpm@11.20.0",
   "scripts": {
     "dev": "rsbuild dev --open",
     "lint": "run-s lint:*",
     "lint:rslint": "rslint --fix .",
     "lint:biome": "biome format --write",
-    "build": "run-p type-check \"build-only {@}\" --",
-    "build:clean": "rimraf dist",
+    "build": "rsbuild build",
     "preview": "rsbuild preview",
-    "skills:update": "npx skills update",
+    "clean": "rimraf dist docs",
+    "clean:hard": "rimraf dist node_modules/.tmp node_modules/.cache",
     "test": "rstest",
     "test:watch": "rstest --watch",
-    "build-only": "rsbuild build",
-    "type-check": "vue-tsc --build --force",
-    "prepare": "husky"
+    "skills:update": "npx skills update"
   },
   "dependencies": {
     "pinia": "^4.0.2",
@@ -44,27 +42,25 @@
     "vue-router": "^5.2.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.5.5",
-    "@rsbuild/core": "^2.1.8",
+    "@biomejs/biome": "^2.5.7",
+    "@rsbuild/core": "^2.1.10",
+    "@rsbuild/plugin-type-check": "^1.6.0",
     "@rsbuild/plugin-vue": "^2.0.1",
-    "@rslint/core": "^0.7.1",
-    "@rstest/adapter-rsbuild": "^0.11.4",
-    "@rstest/core": "^0.11.4",
+    "@rslint/core": "^0.7.2",
+    "@rstest/adapter-rsbuild": "^0.11.5",
+    "@rstest/core": "^0.11.5",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^7.0.0",
     "@testing-library/vue": "^8.1.0",
     "@tsconfig/node-lts": "^24.0.0",
-    "@types/node": "^26.1.1",
+    "@types/node": "^26.1.2",
+    "@vue-devtools-rstack/rsbuild": "^0.1.0",
     "@vue/test-utils": "^2.4.11",
     "@vue/tsconfig": "^0.9.1",
-    "globals": "^17.7.0",
     "happy-dom": "^20.11.1",
-    "husky": "^9.1.7",
-    "jiti": "^2.7.0",
-    "npm-run-all2": "^9.0.2",
-    "@typescript/native": "npm:typescript@^7.0.2",
-    "typescript": "npm:@typescript/typescript6@^6.0.2",
-    "vue-tsc": "^3.3.8"
+    "npm-run-all2": "^9.0.3",
+    "rimraf": "^6.1.3",
+    "typescript": "^7.0.2"
   },
   "lint-staged": {
     "*": "pnpm lint"

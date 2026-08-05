@@ -3,6 +3,8 @@ import { readFileSync } from 'node:fs';
 
 import { defineConfig } from '@rsbuild/core';
 import { pluginVue } from '@rsbuild/plugin-vue';
+import { pluginTypeCheck } from '@rsbuild/plugin-type-check';
+import { pluginVueDevTools } from '@vue-devtools-rstack/rsbuild';
 
 const pkg = JSON.parse(readFileSync('./package.json', 'utf-8')) as {
   name: string;
@@ -14,11 +16,10 @@ console.debug('Injected version:', pkg.version);
 console.debug('Injected build date:', buildDate);
 
 export default defineConfig({
-  plugins: [pluginVue()],
+  plugins: [pluginTypeCheck(), pluginVue(), pluginVueDevTools()],
   html: {
     template: './index.html',
   },
-
   source: {
     tsconfigPath: './tsconfig.rsbuild.json',
     include: ['./src'],

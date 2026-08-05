@@ -1,30 +1,34 @@
-# Logs
-logs
-*.log
-pnpm-debug.log*
-lerna-debug.log*
+# Dependencies
+node_modules/
+.claude/
 
-node_modules
-dist
-dist-ssr
-*.local
-*.tsbuildinfo
+# Build / Cache
+dist/
+docs/
+.rslib/
+coverage/
 
-# Editor directories and files
+# Database
+data/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Lockfiles
+*.lock
+# pnpm-lock.yaml # as you need to commit this file for reproducible builds
+# pnpm-workspace.yaml # as you need to commit this file for reproducible builds
+
+# IDE
 .vscode/*
 !.vscode/extensions.json
-.idea
+!.vscode/settings.json
+.idea/
+
+# Local
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
-# Vitest coverage
-coverage/
-test-results/
-playwright-report/
-
-# Special File
-.husky/
+Thumbs.db
+*.local
+*.log*
