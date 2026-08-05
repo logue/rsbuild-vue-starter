@@ -19,7 +19,7 @@ _Vite から `src` をそのままコピーするだけ！_
 
 Lint/Format は [Rslint](https://rslint.rs/)、[Prettier](https://prettier.io/)、[Biome](https://biomejs.dev/) を使った統合 `pnpm lint` パイプラインで実行されます。
 
-また、[vue-devtools](https://devtools.vuejs.org/)の代わりに、[vue-devtools-rstack](https://www.npmjs.com/package/@vue-devtools-rstack/rsbuild)が含まれています。
+また、[vue-tsc](https://github.com/vuejs/language-tools/tree/master/packages/tsc)の代わりに[vue-tsc-api](https://github.com/escaton/vue-tsc-api/)が含まれている他、[vue-devtools](https://devtools.vuejs.org/)の代わりに、[vue-devtools-rstack](https://github.com/OskarLebuda/vue-devtools-rstack#readme)が含まれているため[Vite](https://github.com/logue/vite-vue3-ts-starter)版とほぼ同等の操作が可能です。
 
 ## コマンド
 

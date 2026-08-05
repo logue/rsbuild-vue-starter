@@ -1,9 +1,10 @@
-import { fileURLToPath, URL } from 'node:url';
 import { readFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
+import { fileURLToPath, URL } from 'node:url';
 
 import { defineConfig } from '@rsbuild/core';
-import { pluginVue } from '@rsbuild/plugin-vue';
 import { pluginTypeCheck } from '@rsbuild/plugin-type-check';
+import { pluginVue } from '@rsbuild/plugin-vue';
 import { pluginVueDevTools } from '@vue-devtools-rstack/rsbuild';
 
 const pkg = JSON.parse(readFileSync('./package.json', 'utf-8')) as {
@@ -12,11 +13,23 @@ const pkg = JSON.parse(readFileSync('./package.json', 'utf-8')) as {
 };
 const buildDate = new Date().toISOString();
 
-console.debug('Injected version:', pkg.version);
-console.debug('Injected build date:', buildDate);
-
 export default defineConfig({
-  plugins: [pluginTypeCheck(), pluginVue(), pluginVueDevTools()],
+  plugins: [
+    pluginTypeCheck({
+      tsCheckerOptions: {
+        // vue-tsc-api is a drop-in replacement for vue-tsc that uses
+        // the TypeScript API directly, which is faster and more efficient
+        // than spawning a separate process.
+        typescript: {
+          // point to the installed `typescript` package so the plugin
+          // can read `typescript.version` correctly
+          typescriptPath: createRequire(import.meta.url).resolve('typescript'),
+        },
+      },
+    }),
+    pluginVue(),
+    pluginVueDevTools(),
+  ],
   html: {
     template: './index.html',
   },

@@ -19,7 +19,7 @@ Includes [vue-router](https://router.vuejs.org/) and [Pinia](https://pinia.vuejs
 
 Linting and formatting are driven by a unified `pnpm lint` pipeline using [Rslint](https://rslint.rs/), [Prettier](https://prettier.io/), and [Biome](https://biomejs.dev/).
 
-Additionally, [vue-devtools-rstack](https://github.com/OskarLebuda/vue-devtools-rstack) is included instead of [vue-devtools](https://devtools.vuejs.org/).
+Additionally, it includes [vue-tsc-api](https://github.com/escaton/vue-tsc-api/) instead of [vue-tsc](https://github.com/vuejs/language-tools/tree/master/packages/tsc), and [vue-devtools-rstack](https://github.com/OskarLebuda/vue-devtools-rstack#readme) instead of [vue-devtools](https://devtools.vuejs.org/), allowing for operation almost identical to the [Vite](https://github.com/logue/vite-vue3-ts-starter) version.
 
 ## Commands
 
