@@ -1,4 +1,7 @@
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 defineProps<{
   msg: string;
 }>();
@@ -8,10 +11,22 @@ defineProps<{
   <div class="greetings">
     <h1 class="green">{{ msg }}</h1>
     <h3>
-      You’ve successfully created a project with
-      <a href="https://rsbuild.rs/" target="_blank" rel="noopener">Rsbuild</a>
+      You've successfully created a project with
+      <a
+        href="https://rsbuild.rs/"
+        target="_blank"
+        rel="noopener"
+      >
+        Rsbuild
+      </a>
       +
-      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>
+      <a
+        href="https://vuejs.org/"
+        target="_blank"
+        rel="noopener"
+      >
+        Vue 3
+      </a>
       . What's next?
     </h3>
   </div>
