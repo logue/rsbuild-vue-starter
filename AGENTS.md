@@ -20,8 +20,8 @@ See `package.json` for authoritative dependency versions.
 This guide assumes:
 
 - TypeScript 7.0.2 or later
-- Rsbuild 2.2.1 or later
-- Rstest 0.11.10 or later
+- Rsbuild 2.2.3 or later
+- Rstest 0.11.12 or later
 
 **If you encounter version-related issues, check `package.json` directly—it is the source of truth.**
 
@@ -70,7 +70,6 @@ making the build pipeline transparent and maintainable.
 
 - `pnpm run build` - Build for production
 - `pnpm run dev` - Start dev server
-- `pnpm run dev:demo` - Dev server with hot reload
 - `pnpm run preview` - Preview the built demo site
 - `pnpm run test` - Run tests
 - `pnpm run test:watch` - Watch mode for tests
@@ -84,11 +83,12 @@ making the build pipeline transparent and maintainable.
 - Rsbuild: <https://rsbuild.rs/llms.txt>
 - Rslint: <https://rslint.rs/llms.txt>
 - Rstest: <https://rstest.rs/llms.txt>
+- Vue: <https://vuejs.org/llms-full.txt>
 
 ## Code Style
 
 TypeScript conventions, lint rules, and their rationale are defined in
-[`@logue/biome-plugins`](../biome-plugins/AGENTS.md). Read that file for the full
+[`@logue/biome-plugins`](https://github.com/logue/biome-plugins/raw/refs/heads/main/AGENTS.md). Read that file for the full
 picture. The summary of what is **enforced at lint time** in this project:
 
 | Rule                     | Severity | What it checks                                    |
