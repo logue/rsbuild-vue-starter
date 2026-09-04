@@ -1,6 +1,7 @@
 <script
-  setup
   lang="ts"
+  setup
+  vapor
 >
 import CommunityIcon from './icons/IconCommunity.vue';
 import DocumentationIcon from './icons/IconDocumentation.vue';
@@ -22,8 +23,8 @@ const openReadmeInEditor = () => fetch('/__open-in-editor?file=README.md');
     Vue's
     <a
       href="https://vuejs.org/"
-      target="_blank"
       rel="noopener"
+      target="_blank"
     >
       official documentation
     </a>
@@ -39,40 +40,40 @@ const openReadmeInEditor = () => fetch('/__open-in-editor?file=README.md');
     This project is served and bundled with
     <a
       href="https://rsbuild.rs/guide/start/features"
-      target="_blank"
       rel="noopener"
+      target="_blank"
     >
       Rsbuild
     </a>
     . The recommended IDE setup is
     <a
       href="https://code.visualstudio.com/"
-      target="_blank"
       rel="noopener"
+      target="_blank"
     >
       VSCode
     </a>
     +
     <a
       href="https://github.com/vuejs/language-tools"
-      target="_blank"
       rel="noopener"
+      target="_blank"
     >
       Vue - Official
     </a>
     . If you need to test your components and web pages, check out
     <a
       href="https://rstest.rs/"
-      target="_blank"
       rel="noopener"
+      target="_blank"
     >
       Rstest
     </a>
     and
     <a
       href="https://www.cypress.io/"
-      target="_blank"
       rel="noopener"
+      target="_blank"
     >
       Cypress
     </a>
@@ -99,39 +100,39 @@ const openReadmeInEditor = () => fetch('/__open-in-editor?file=README.md');
     Get official tools and libraries for your project:
     <a
       href="https://pinia.vuejs.org/"
-      target="_blank"
       rel="noopener"
+      target="_blank"
       >Pinia</a
     >
     ,
     <a
       href="https://router.vuejs.org/"
-      target="_blank"
       rel="noopener"
+      target="_blank"
     >
       Vue Router
     </a>
     ,
     <a
       href="https://test-utils.vuejs.org/"
-      target="_blank"
       rel="noopener"
+      target="_blank"
     >
       Vue Test Utils
     </a>
     , and
     <a
       href="https://github.com/OskarLebuda/vue-devtools-rstack"
-      target="_blank"
       rel="noopener"
+      target="_blank"
     >
       Vue Dev Tools
     </a>
     . If you need more resources, we suggest paying
     <a
       href="https://github.com/vuejs/awesome-vue"
-      target="_blank"
       rel="noopener"
+      target="_blank"
     >
       Awesome Vue
     </a>
@@ -147,32 +148,32 @@ const openReadmeInEditor = () => fetch('/__open-in-editor?file=README.md');
     Got stuck? Ask your question on
     <a
       href="https://chat.vuejs.org"
-      target="_blank"
       rel="noopener"
+      target="_blank"
     >
       Vue Land
     </a>
     (our official Discord server), or
     <a
       href="https://stackoverflow.com/questions/tagged/vue.js"
-      target="_blank"
       rel="noopener"
+      target="_blank"
     >
       StackOverflow
     </a>
     . You should also follow the official
     <a
       href="https://bsky.app/profile/vuejs.org"
-      target="_blank"
       rel="noopener"
+      target="_blank"
     >
       @vuejs.org
     </a>
     Bluesky account or the
     <a
       href="https://x.com/vuejs"
-      target="_blank"
       rel="noopener"
+      target="_blank"
     >
       @vuejs
     </a>
@@ -189,8 +190,8 @@ const openReadmeInEditor = () => fetch('/__open-in-editor?file=README.md');
     sustainability. You can help us by
     <a
       href="https://vuejs.org/sponsor/"
-      target="_blank"
       rel="noopener"
+      target="_blank"
     >
       becoming a sponsor
     </a>
