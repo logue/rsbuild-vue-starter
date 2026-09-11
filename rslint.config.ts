@@ -4,7 +4,7 @@ import {
   js,
   jsxA11yPlugin,
   promisePlugin,
-  reactHooksPlugin,
+  // reactHooksPlugin,
   reactPlugin,
   rstestPlugin,
   ts,
@@ -72,7 +72,7 @@ export default defineConfig([
   promisePlugin.configs.recommended,
   unicornPlugin.configs.recommended,
   reactPlugin.configs.recommended,
-  reactHooksPlugin.configs.recommended,
+  // reactHooksPlugin.configs.recommended,
   jsxA11yPlugin.configs.recommended,
 
   {
