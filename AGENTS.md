@@ -10,7 +10,7 @@ You are an expert in TypeScript, Rsbuild, Rstest, and Vue Web application develo
 - **Language**: TypeScript 7
 - **Package manager**: pnpm (do not use npm or yarn)
 
-**Last updated**: 2026-09-04
+**Last updated**: 2026-09-18
 **Verified with**: `package.json` in this repository
 
 ### Tool Versions
@@ -20,8 +20,8 @@ See `package.json` for authoritative dependency versions.
 This guide assumes:
 
 - TypeScript 7.0.2 or later
-- Rsbuild 2.2.3 or later
-- Rstest 0.11.12 or later
+- Rsbuild 2.2.8 or later
+- Rstest 0.12.0 or later
 
 **If you encounter version-related issues, check `package.json` directly—it is the source of truth.**
 
@@ -74,6 +74,7 @@ making the build pipeline transparent and maintainable.
 - `pnpm run test` - Run tests
 - `pnpm run test:watch` - Watch mode for tests
 - `pnpm run lint` - Lint and format all code (Biome + Rslint)
+- `pnpm run analyze` - Analyze build artifacts
 - `pnpm run inspect` - Inspect final rsbuild config
 - `pnpm run clean` - Remove build artifacts
 - `pnpm run clean:hard` - Remove build artifact and build caches.

@@ -1,7 +1,10 @@
 {
   "recommendations": [
-    "Vue.volar",
     "biomejs.biome",
+    "rstack.rstack",
+    "Vue.volar"
+  ],
+  "unwantedRecommendations": [
     "rstack.rslint",
     "rstack.rstest"
   ]

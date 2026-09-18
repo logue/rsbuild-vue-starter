@@ -146,7 +146,7 @@ export default defineConfig([
             {
               group: 'builtin',
               pattern:
-                '{@rsbuild/**,@rslint/**,@rslib/*,@rspack/**,@rstest/**}',
+                '{@rsbuild/**,@rsdoctor/**,@rslint/**,@rslib/*,@rspack/**,@rstest/**}',
               position: 'before',
             },
             {

@@ -5,13 +5,13 @@
       "source": "rstackjs/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/rsbuild-best-practices/SKILL.md",
-      "computedHash": "2f1de26a27367666c49d16b114d31dbf78dc71f02b3e0784b1e3bf90f4e6e90b"
+      "computedHash": "370b2405efb009d4bc4b7f009c8ea2661a375abe59a0d873fe9af619bfc80733"
     },
     "rstest-best-practices": {
       "source": "rstackjs/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/rstest-best-practices/SKILL.md",
-      "computedHash": "589016fc3deccd3244d40b113f897f2af83ef75022dff5cece7f90682c566e00"
+      "computedHash": "2657c33744b26c4d2cde2c238a6ad52e92532f240f345d0f798b3252a729fcbb"
     },
     "vue-best-practices": {
       "source": "vuejs-ai/skills",
