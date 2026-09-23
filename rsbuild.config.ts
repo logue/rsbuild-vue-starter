@@ -40,8 +40,9 @@ export default defineConfig({
         process.env.RSDOCTOR === 'true' &&
           new RsdoctorRspackPlugin({
             // plugin options
+            // @see https://rsdoctor.rs/config/options/options
           }),
-      ],
+      ].filter(Boolean),
     },
   },
 });

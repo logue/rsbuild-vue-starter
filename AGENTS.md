@@ -86,6 +86,7 @@ making the build pipeline transparent and maintainable.
 - Rsbuild: <https://rsbuild.rs/llms.txt>
 - Rslint: <https://rslint.rs/llms.txt>
 - Rstest: <https://rstest.rs/llms.txt>
+- Rsdoctor: <https://rsdoctor.rs/llms.txt>
 - Vue: <https://vuejs.org/llms-full.txt>
 
 ## Code Style
