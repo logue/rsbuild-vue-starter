@@ -3,6 +3,7 @@ import {
   importPlugin,
   js,
   jsxA11yPlugin,
+  nodePlugin,
   promisePlugin,
   // reactHooksPlugin,
   reactPlugin,
@@ -83,6 +84,7 @@ export default defineConfig([
       'import',
       'promise',
       'unicorn',
+      'node',
     ],
     rules: {
       ...importPlugin.configs.recommended.rules,
@@ -199,6 +201,7 @@ export default defineConfig([
       'promise',
       'unicorn',
       'rstest',
+      'node',
     ],
     rules: {
       ...rstestPlugin.configs.recommended.rules,

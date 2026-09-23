@@ -1,8 +1,4 @@
-<script
-  lang="ts"
-  setup
-  vapor
->
+<script lang="ts" setup vapor>
 import TheWelcome from '@/components/TheWelcome.vue';
 </script>
 

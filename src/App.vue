@@ -1,8 +1,4 @@
-<script
-  lang="ts"
-  setup
-  vapor
->
+<script lang="ts" setup vapor>
 import { RouterLink, RouterView } from 'vue-router';
 
 import HelloWorld from '@/components/HelloWorld.vue';

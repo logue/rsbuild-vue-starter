@@ -10,21 +10,21 @@
     "**/node_modules"
   ],
   "compilerOptions": {
+    "strict": true,
     // Extra safety for array and object lookups, but may have false positives.
     "noUncheckedIndexedAccess": true,
     // Path mapping for cleaner imports.
+    "types": [
+      "@rsbuild/core/types",
+      "node"
+    ],
     "paths": {
       "@/*": [
         "./src/*"
       ]
     },
-    // `vue-tsc --build` produces a .tsbuildinfo file for incremental type-checking.
     // Specified here to keep it out of the root directory.
     "rootDir": "./",
-    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.rsbuild.tsbuildinfo",
-    "types": [
-      "@rsbuild/core/types",
-      "node"
-    ]
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.rsbuild.tsbuildinfo"
   }
 }

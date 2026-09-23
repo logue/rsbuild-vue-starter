@@ -5,12 +5,12 @@ You are an expert in TypeScript, Rsbuild, Rstest, and Vue Web application develo
 ## Setup & Overview
 
 - **Build tool**: Rsbuild
-- **Linter**: Rslint and Biome (with `@logue/biome-plugins` custom rules)
+- **Linter**: Vize and Rslint and Biome (with `@logue/biome-plugins` custom rules)
 - **Testing**: Rstest
 - **Language**: TypeScript 7
 - **Package manager**: pnpm (do not use npm or yarn)
 
-**Last updated**: 2026-09-18
+**Last updated**: 2026-09-23
 **Verified with**: `package.json` in this repository
 
 ### Tool Versions
@@ -68,16 +68,18 @@ making the build pipeline transparent and maintainable.
 
 ## Commands
 
-- `pnpm run build` - Build for production
+- `pnpm run build` - Type check and build.
 - `pnpm run dev` - Start dev server
 - `pnpm run preview` - Preview the built demo site
 - `pnpm run test` - Run tests
 - `pnpm run test:watch` - Watch mode for tests
-- `pnpm run lint` - Lint and format all code (Biome + Rslint)
+- `pnpm run lint` - Lint and format all code (Vize + Biome + Rslint)
 - `pnpm run analyze` - Analyze build artifacts
 - `pnpm run inspect` - Inspect final rsbuild config
 - `pnpm run clean` - Remove build artifacts
-- `pnpm run clean:hard` - Remove build artifact and build caches.
+- `pnpm run clean:hard` - Remove build artifact and caches.
+- `pnpm run type-check` - Vue type check
+- `pnpm run build-only` - Build for production
 
 ## Documentation
 
