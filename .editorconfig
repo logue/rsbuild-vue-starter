@@ -1,9 +1,15 @@
 root = true
 
 [*]
+# Text encoding and line endings
 charset = utf-8
-end_of_line = lf
 insert_final_newline = true
+
+# Formatting conventions used by the project
+end_of_line = lf
 indent_style = space
 indent_size = 2
-trim_trailing_whitespace = true
+max_line_length = 80
+
+[*.rs]
+indent_size = 4

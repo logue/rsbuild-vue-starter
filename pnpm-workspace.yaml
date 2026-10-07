@@ -2,4 +2,5 @@
 # Version selection is delegated to package.json constraints.
 minimumReleaseAge: 0
 overrides:
-  nanoid: ">=6.0.1"
+  nanoid: '>=6.0.1'
+  katex: '>=0.19.0'

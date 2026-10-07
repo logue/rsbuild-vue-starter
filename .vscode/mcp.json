@@ -3,10 +3,7 @@
     "rsdoctor": {
       "type": "stdio",
       "command": "npx",
-      "args": [
-        "-y",
-        "@rsdoctor/mcp-server@latest"
-      ]
+      "args": ["-y", "@rsdoctor/mcp-server@latest"]
     }
   },
   "inputs": []

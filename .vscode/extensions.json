@@ -1,11 +1,15 @@
 {
   "recommendations": [
-    "biomejs.biome",
+    "EditorConfig.EditorConfig",
+    "oxc.oxc-vscode",
     "rstack.rstack",
     "Vue.volar"
   ],
   "unwantedRecommendations": [
+    "biomejs.biome",
     "rstack.rslint",
-    "rstack.rstest"
+    "rstack.rstest",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode"
   ]
 }

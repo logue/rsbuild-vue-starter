@@ -11,13 +11,13 @@
 
 このテンプレートは、Rsbuild スタック上で Vue 3 と TypeScript の開発をすぐに始めるためのものです。テンプレートでは Vue 3 の `<script setup>` SFC を使用しています。詳細は [script setup ドキュメント](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) を参照してください。
 
-定期的に`pnpm skill:update`を実行することで、AI駆動開発するうえで適切なスキルを更新できます。
+定期的に `pnpm run skills:update` を実行することで、AI 駆動開発向けのスキルを更新できます。
 
 _Vite から `src` をそのままコピーするだけ！_
 
 [vue-router](https://router.vuejs.org/) と [Pinia](https://pinia.vuejs.org/) を含みます。
 
-Lint/Format は [Rslint](https://rslint.rs/)、[Prettier](https://prettier.io/)、[Biome](https://biomejs.dev/) を使った統合 `pnpm lint` パイプラインで実行されます。
+Lint/Format は [Oxlint](https://oxc.rs/docs/guide/usage/linter.html) と [Oxfmt](https://oxc.rs/docs/guide/usage/formatter.html) を使った統合 `pnpm run lint` パイプラインで実行されます。Oxlint の自動修正後に Oxfmt で整形します。
 
 また、[vue-tsc](https://github.com/vuejs/language-tools/tree/master/packages/tsc)の代わりに[vue-tsc-api](https://github.com/escaton/vue-tsc-api/)が含まれている他、[vue-devtools](https://devtools.vuejs.org/)の代わりに、[vue-devtools-rstack](https://github.com/OskarLebuda/vue-devtools-rstack#readme)が含まれているため[Vite](https://github.com/logue/vite-vue3-ts-starter)版とほぼ同等の操作が可能です。
 
@@ -25,20 +25,21 @@ Lint/Format は [Rslint](https://rslint.rs/)、[Prettier](https://prettier.io/)�
 
 コマンドはシンプルで CI フレンドリーな構成です。
 
-| コマンド     | 説明                                                                     |
-| ------------ | ------------------------------------------------------------------------ |
-| dev          | 開発サーバーを起動します。                                               |
-| build        | 本番環境向けにビルドします。                                             |
-| build:clean  | 本番環境用のビルドファイルをクリアします。                               |
-| preview      | 本番環境用のビルドで生成されたプログラムを実行します。                   |
-| lint         | すべての lint/format ステップ (`lint:*`) を 1 つのコマンドで実行します。 |
-| lint:rslint  | rslint を実行します。                                                    |
-| lint:biome   | biome フォーマッタを実行します。                                         |
-| lint:pretter | prettier フォーマッタを実行します。                                      |
-| test         | Rstest を使用してテストを実行します。                                    |
-| test:watch   | Rstest を使用して、ウォッチモードでテストを実行します。                  |
-| build-only   | チェックなしで本番環境向けにビルドします。デプロイ時に使用します。       |
-| type-check   | Vue マークアップをチェックします。                                       |
+| コマンド    | 説明                                                  |
+| ----------- | ----------------------------------------------------- |
+| dev         | 開発サーバーを起動します。                            |
+| lint        | Oxlint の自動修正後に Oxfmt で整形します。            |
+| lint:oxlint | Oxlint を自動修正付きで実行します。                   |
+| lint:oxfmt  | Oxfmt でプロジェクトを整形します。                    |
+| build       | 型チェックと本番環境向けのビルドを実行します。        |
+| build-only  | 型チェックなしで本番環境向けにビルドします。          |
+| type-check  | アプリケーションの型と Vue マークアップを確認します。 |
+| preview     | 本番ビルドで生成されたプログラムを実行します。        |
+| analyze     | ビルド成果物を解析します。                            |
+| test        | Rstest でテストを実行します。                         |
+| test:watch  | ウォッチモードでテストを実行します。                  |
+| clean       | 本番ビルドの成果物を削除します。                      |
+| clean:hard  | 本番ビルド成果物とビルドキャッシュを削除します。      |
 
 ## チェックリスト
 

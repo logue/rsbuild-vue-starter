@@ -1,16 +1,20 @@
 # AGENTS.md
 
-You are an expert in TypeScript, Rsbuild, Rstest, and Vue Web application development. You write maintainable, performant, and accessible code.
+This project uses Rstack CLI as its JS toolchain:
+
+- Read the docs linked from `node_modules/rstack/docs/llms.txt` when needed
+- Online docs: <https://rstack.rs/llms.txt>
+- Run `rs -h` for CLI help
 
 ## Setup & Overview
 
-- **Build tool**: Rsbuild
-- **Linter**: Vize and Rslint and Biome (with `@logue/biome-plugins` custom rules)
+- **Build tools**: Rstack
+- **Linter**: Oxlint and Oxfmt
 - **Testing**: Rstest
 - **Language**: TypeScript 7
 - **Package manager**: pnpm (do not use npm or yarn)
 
-**Last updated**: 2026-09-23
+**Last updated**: 2026-10-07
 **Verified with**: `package.json` in this repository
 
 ### Tool Versions
@@ -20,8 +24,7 @@ See `package.json` for authoritative dependency versions.
 This guide assumes:
 
 - TypeScript 7.0.2 or later
-- Rsbuild 2.2.8 or later
-- Rstest 0.12.0 or later
+- rstack 0.8.1 or later
 
 **If you encounter version-related issues, check `package.json` directly—it is the source of truth.**
 
@@ -35,9 +38,9 @@ This guide assumes:
 Recommended extensions are listed in `.vscode/extensions.json`.
 Formatter and linter are configured in `.vscode/settings.json`:
 
-- Default formatter: **Biome**
+- Default formatter: **Oxfmt**
 - Format on save: enabled
-- Auto-fix on save: Rslint
+- Auto-fix on save: Oxlint
 
 When you open the project in VS Code, you'll be prompted to install recommended extensions.
 
@@ -45,61 +48,76 @@ When you open the project in VS Code, you'll be prompted to install recommended 
 
 ### Project Structure
 
-This project uses two complementary build tools:
+This project uses the Rstack CLI as a unified interface for the library,
+demo application, tests, and linting:
 
-- **Rsbuild** - Builds the library for distribution (ESM, CJS, etc.)
+- **Rsbuild** - Builds the application
   - Command: `pnpm run build`
-  - Output: `dist/` (published to npm)
-  - Configuration: `rsbuild.config.ts`, `tsconfig.rsbuild.json`
+  - Output: `dist/`
+- **Rstest** - Runs the test suite
+  - Command: `pnpm run test`
+- **Oxlint and Oxfmt** - Lints and formats the project
+  - Command: `pnpm run lint`
 
-#### TypeScript Configuration Strategy
+Application and staged-file hook configuration is defined in
+`rstack.config.ts` through `define.app` and `define.staged`. Rstack provides the
+CLI entry points for Rstest.
+TypeScript compiler options remain separated by use case:
 
-TypeScript configurations are organized by **tool name, not by purpose**:
-
-- `tsconfig.rstest.json` - Testing configuration (if applicable)
-
-This approach eliminates conditional branching based on build purpose.
-Instead, each tool has its own explicit configuration namespace,
-making the build pipeline transparent and maintainable.
+- `tsconfig.rsbuild.json` - Application
+- `tsconfig.rstest.json` - Tests
 
 ### Development Workflow
 
-- `pnpm run dev` - Watch mode for library
+- `pnpm run dev` - Start the development server with hot reload
+- `pnpm run build` - Build the application for production
+- `pnpm run preview` - Preview the built application
 
 ## Commands
 
-- `pnpm run build` - Type check and build.
-- `pnpm run dev` - Start dev server
-- `pnpm run preview` - Preview the built demo site
-- `pnpm run test` - Run tests
+- `pnpm run dev` - Start the development server with hot reload
+- `pnpm run lint` - Lint and format all code (Oxfmt + Oxlint)
+- `pnpm run analyze` - Analyze library build artifacts
+- `pnpm run test` - Run tests at once
 - `pnpm run test:watch` - Watch mode for tests
-- `pnpm run lint` - Lint and format all code (Vize + Biome + Rslint)
-- `pnpm run analyze` - Analyze build artifacts
-- `pnpm run inspect` - Inspect final rsbuild config
 - `pnpm run clean` - Remove build artifacts
-- `pnpm run clean:hard` - Remove build artifact and caches.
-- `pnpm run type-check` - Vue type check
-- `pnpm run build-only` - Build for production
+- `pnpm run clean:hard` - Remove build artifact and build caches
 
-## Documentation
+### Rsdoctor Analysis (AI Internal Use)
 
-- Rsbuild: <https://rsbuild.rs/llms.txt>
-- Rslint: <https://rslint.rs/llms.txt>
-- Rstest: <https://rstest.rs/llms.txt>
-- Rsdoctor: <https://rsdoctor.rs/llms.txt>
-- Vue: <https://vuejs.org/llms-full.txt>
+Use Rsdoctor analysis internally to support evidence-based bundle optimization.
+Keep this workflow read-only unless the user explicitly asks for setup or code
+changes.
 
-## Code Style
+- First check a user-provided or known path for a real `rsdoctor-data.json`. If
+  no path is available and a report needs to be generated, run
+  `pnpm run analyze` before searching. Since `.rstack/` is gitignored, use
+  `rg --hidden --no-ignore --files .rstack` to locate the generated file;
+  ordinary `rg --files` will omit it.
+- Do not run `rsdoctor-agent` until the data file exists. If it is missing, ask
+  for its path or generate it with `pnpm run analyze` when generation is
+  required.
+- `rsdoctor` from `@rsdoctor/cli` is only the browser viewer. It is not a
+  substitute for the data-fetching `rsdoctor-agent` from
+  `@rsdoctor/agent-cli`.
+- This repository uses `@rsdoctor/rspack-plugin` 1.6.x. If JSON output is not
+  produced by the normal script, use `RSDOCTOR_OUTPUT=json RSDOCTOR=true pnpm run build`.
+  For plugin versions below 1.5.11, configure brief JSON output instead of
+  using `RSDOCTOR_OUTPUT=json`.
+- Validate that the generated data is valid JSON before analysis. A
+  `.rstack/.rsdoctor/manifest.json` file alone is only a viewer index.
+- Fetch only the default evidence first: build cost, top assets, top packages,
+  duplicate packages, cross-chunk duplication, and retained tree-shaking
+  modules. Bound output with filters, pagination, and limits.
+- Rank recommendations by measured impact. Trace issuer/reference chains,
+  inspect bailout reasons, change configuration, or rerun builds only as an
+  explicit follow-up.
+- Present findings as high-priority issues, proposed solutions, optional
+  reference-chain follow-ups, and remaining deep-dive categories. Include
+  concrete sizes, times, counts, paths, or rule codes where available.
 
-TypeScript conventions, lint rules, and their rationale are defined in
-[`@logue/biome-plugins`](https://github.com/logue/biome-plugins/raw/refs/heads/main/AGENTS.md). Read that file for the full
-picture. The summary of what is **enforced at lint time** in this project:
-
-| Rule                     | Severity | What it checks                                    |
-| ------------------------ | -------- | ------------------------------------------------- |
-| `enforce-pure-src`       | error    | No Storybook/demo imports inside `src/`           |
-| `prefer-union-over-enum` | error    | `enum` is forbidden; use union types              |
-| `no-null-type`           | warn     | `\| null` in type annotations; use optional (`?`) |
+For command details and version-specific generation rules, read
+`.agents/skills/rsdoctor-analysis/SKILL.md` and its references.
 
 ### Directory Structure & File Organization
 
