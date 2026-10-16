@@ -1,6 +1,12 @@
 {
   "version": 1,
   "skills": {
+    "create-adaptable-composable": {
+      "source": "vuejs-ai/skills",
+      "sourceType": "github",
+      "skillPath": "skills/create-adaptable-composable/SKILL.md",
+      "computedHash": "2f215126499d29a733be980ef9ce8f4ffb5f25a8831aec965d86c0cd21b2c5d2"
+    },
     "rsbuild-best-practices": {
       "source": "rstackjs/agent-skills",
       "sourceType": "github",
@@ -11,19 +17,13 @@
       "source": "rstackjs/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/rsdoctor-analysis/SKILL.md",
-      "computedHash": "1aa36522b3ef319f9348fe0b7d7863c8b2d0d2ee76a1f784f895d239cb02ebd2"
+      "computedHash": "9a0e5e0023148c482c1f75cba2dfd8f24a484f32da48568670ca40d7173d4845"
     },
     "rstest-best-practices": {
       "source": "rstackjs/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/rstest-best-practices/SKILL.md",
       "computedHash": "2657c33744b26c4d2cde2c238a6ad52e92532f240f345d0f798b3252a729fcbb"
-    },
-    "create-adaptable-composable": {
-      "source": "vuejs-ai/skills",
-      "sourceType": "github",
-      "skillPath": "skills/create-adaptable-composable/SKILL.md",
-      "computedHash": "2f215126499d29a733be980ef9ce8f4ffb5f25a8831aec965d86c0cd21b2c5d2"
     },
     "vue-best-practices": {
       "source": "vuejs-ai/skills",

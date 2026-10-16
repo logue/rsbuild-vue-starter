@@ -1,6 +1,6 @@
 {
   "name": "rsbuild-vue-starter",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "private": true,
   "description": "Vue3 TypeScript Starter project for Rstack.",
   "homepage": "https://github.com/logue/rsbuild-vue-starter",
@@ -29,11 +29,11 @@
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "rs build preview",
     "clean": "rimraf dist",
-    "clean:hard": "rimraf dist node_modules/.tmp node_modules/.cache",
+    "clean:hard": "rimraf .rstack/cache .rstack/.rsdoctor demo dist docs node_modules/.tmp node_modules/.cache",
     "build-only": "rs build",
     "type-check": "vize check --tsconfig tsconfig.rsbuild.json",
     "skills:update": "npx skills update",
-    "prepare": "rs hooks"
+    "prepare": "rs hooks && (npx --no-install skills --version >/dev/null 2>&1 && npx skills experimental_install --yes || echo '\\033[1;33m⚠️  [Warning] skills command not found. Skipped auto-installation of agent skills.\\033[0m')"
   },
   "dependencies": {
     "pinia": "^4.1.0",

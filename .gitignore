@@ -17,7 +17,7 @@ node_modules/
 .nuxt/
 .output/
 .pnpm/crates/
-#.rstack/
+.rstack/
 !.rstack/hooks/
 
 # Test Report

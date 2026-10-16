@@ -52,14 +52,19 @@ define.app({
     tsconfigPath: './tsconfig.rsbuild.json'
   },
   tools: {
-    bundlerChain: (chain, { CHAIN_ID }) => {
-      chain.plugin('Rsdoctor').use(
-        RsdoctorRspackPlugin as never,
-        [
-          // plugin options
-          // @see https://rsdoctor.rs/config/options/options
-        ] as never
-      );
+    rspack: {
+      plugins: [
+        // Only register the plugin when RSDOCTOR is true, as the plugin will increase the build time.
+        process.env.RSDOCTOR &&
+          new RsdoctorRspackPlugin({
+            // plugin options
+            // @see {@link https://rsdoctor.rs/guide/start/features | Rsdoctor Docs}
+            output: {
+              // Do not output report in dist dir.
+              reportDir: '.rstack/'
+            }
+          })
+      ].filter(Boolean)
     }
   }
 });

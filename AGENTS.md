@@ -24,7 +24,7 @@ See `package.json` for authoritative dependency versions.
 This guide assumes:
 
 - TypeScript 7.0.2 or later
-- rstack 0.8.1 or later
+- rstack 0.8.4 or later
 
 **If you encounter version-related issues, check `package.json` directly—it is the source of truth.**
 

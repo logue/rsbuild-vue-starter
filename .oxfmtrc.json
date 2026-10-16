@@ -2,28 +2,32 @@
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
   "ignorePatterns": [
     // AI agents skill docs.
+    "**/.agent/**",
     "**/.agents/**",
+    "**/.claude/**",
+    "**/.cursor/**",
+    "**/.windsurf/**",
     // Build intermediate artifacts.
     "**/.cache/**",
     "**/.data/**",
     "**/.mf/**",
     "**/.nitro/**",
     "**/.nuxt/**",
-    "**/.output/**",
+    "**/.pnpm/**",
     "**/.rstack/**",
     // Test coverage reports.
     "**/coverage/**",
-    "**/reports",
-    "**/test-results",
+    "**/e2e/**",
+    "**/playwright-report/**",
+    "**/reports/**",
+    "**/test-results/**",
     // Build artifacts.
     "**/demo/**",
-    "**/dist-ssr/**",
     "**/dist/**",
     "**/docs/**",
     "**/storybook-static/**",
-    // Grit (Biome Rules) source artifacts.
-    "**/grit/**",
-    // Node modules.
+    "**/target/**",
+    // Node modules
     "**/node_modules/**"
   ],
   "printWidth": 80,
@@ -39,7 +43,7 @@
   "sortPackageJson": true,
   "sortImports": {
     "newlinesBetween": true,
-    "internalPattern": ["@/", "~/"],
+    "internalPattern": ["@/"],
     "customGroups": [
       {
         "groupName": "framework",
