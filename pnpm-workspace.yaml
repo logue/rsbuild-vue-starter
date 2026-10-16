@@ -1,6 +1,16 @@
+# If you use rust, comment out bellow:
+# cargo:
+#  enabled: true
+
 # Do not enforce minimum release age for dependencies.
 # Version selection is delegated to package.json constraints.
 minimumReleaseAge: 0
+
 overrides:
-  nanoid: '>=6.0.1'
+  braces: '>=3.0.3'
   katex: '>=0.19.0'
+
+# Agent skills
+skills:
+  dirs:
+    - .agents/skills

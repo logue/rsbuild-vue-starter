@@ -40,6 +40,9 @@ define.app({
     title: pkg.name,
     template: './src/index.html'
   },
+  performance: {
+    buildCache: false
+  },
   source: {
     define: createBuildDefines(),
     entry: {
@@ -49,15 +52,22 @@ define.app({
     tsconfigPath: './tsconfig.rsbuild.json'
   },
   tools: {
-    rspack: {
-      plugins: [
-        process.env.RSDOCTOR === 'true' &&
-          new RsdoctorRspackPlugin({
-            // plugin options
-            // @see https://rsdoctor.rs/config/options/options
-          })
-      ].filter(Boolean)
+    bundlerChain: (chain, { CHAIN_ID }) => {
+      chain.plugin('Rsdoctor').use(
+        RsdoctorRspackPlugin as never,
+        [
+          // plugin options
+          // @see https://rsdoctor.rs/config/options/options
+        ] as never
+      );
     }
+  }
+});
+
+define.test({
+  testEnvironment: 'happy-dom',
+  source: {
+    tsconfigPath: './tsconfig.rstest.json'
   }
 });
 

@@ -9,12 +9,12 @@ This project uses Rstack CLI as its JS toolchain:
 ## Setup & Overview
 
 - **Build tools**: Rstack
-- **Linter**: Oxlint and Oxfmt
+- **Linter**: Oxlint and Oxfmt (see <https://oxc.rs/llms.txt>)
 - **Testing**: Rstest
 - **Language**: TypeScript 7
 - **Package manager**: pnpm (do not use npm or yarn)
 
-**Last updated**: 2026-10-07
+**Last updated**: 2026-10-11
 **Verified with**: `package.json` in this repository
 
 ### Tool Versions

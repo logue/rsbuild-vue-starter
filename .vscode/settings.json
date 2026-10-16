@@ -5,13 +5,17 @@
     "source.fixAll.oxc": "explicit"
   },
   "eslint.enable": false,
+  "rstack.rslint.enable": false,
+  "rstack.fmt.enable": false,
+  "oxc.enable.oxfmt": true,
+  "oxc.enable.oxlint": true,
   // Allow json comments.
   "files.associations": {
     "*.json": "jsonc"
   },
   // Enable the experimental TypeScript Go (tsgo) feature for faster TypeScript compilation.
   "js/ts.experimental.useTsgo": true,
-  "[markdown]": {
+  "[typescript]": {
     "editor.defaultFormatter": "oxc.oxc-vscode"
   }
 }
