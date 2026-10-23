@@ -9,11 +9,17 @@ defineProps<{
     <h1 class="green">{{ msg }}</h1>
     <h3>
       You've successfully created a project with
-      <a href="https://rstack.rs/" rel="noopener" target="_blank">Rstack</a>
+      <a href="https://rstack.rs/" rel="noopener noreferrer" target="_blank">
+        Rstack
+      </a>
       +
-      <a href="https://oxc.rs/" rel="noopener" target="_blank">Oxc</a>
+      <a href="https://oxc.rs/" rel="noopener noreferrer" target="_blank">
+        Oxc
+      </a>
       +
-      <a href="https://vuejs.org/" rel="noopener" target="_blank">Vue 3</a>
+      <a href="https://vuejs.org/" rel="noopener noreferrer" target="_blank">
+        Vue 3
+      </a>
       . What's next?
     </h3>
   </div>
